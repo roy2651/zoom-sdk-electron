@@ -114,11 +114,7 @@
  * @return The username.
  */
 - (NSString*)getUserName;
-/**
- * @brief Get the email matched with the current user information.
- * @return The email.
- */
-- (NSString*)getEmail;
+
 /**
  * @brief Get the user ID matched with the current user information.
  * @return The user ID. 
@@ -159,6 +155,12 @@
  * @return The object of ZoomSDKWebinarAttendeeStatus.
  */
 - (ZoomSDKWebinarAttendeeStatus*)GetWebinarAttendeeStatus;
+
+/**
+ *@brief Get the user is talking.
+ *@return YES means that the user is talking.
+ */
+- (BOOL)isTalking;
 @end
 /**
  * @brief Join meeting helper.
@@ -293,12 +295,18 @@
  */
 - (void)onHostAskUnmute;
 
+/**
+ *@brief Notification of in-meeting active speakers.
+ *@param useridArray The array contain userid of the active speakers.
+ */
+- (void)onUserActiveAudioChanage:(NSArray *)useridArray;
+
 @end
 
 @interface ZoomSDKMeetingActionController : NSObject
 {
     id<ZoomSDKMeetingActionControllerDelegate> _delegate;
-    NSMutableArray*             _participantsArray;
+//    NSMutableArray*             _participantsArray;
 }
 @property(nonatomic, assign) id<ZoomSDKMeetingActionControllerDelegate> delegate;
 
